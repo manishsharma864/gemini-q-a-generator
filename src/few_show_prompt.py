@@ -1,42 +1,71 @@
 from langchain.prompts import PromptTemplate
 
 Template = '''\
-You are an expert in the creation of multiple choice questions  \
-Your job is create a {number} number of multi choice questions in {difficulty} level. \
-Make the quiz to test the cognitive and analytical abilities of a user. \
-Make the quiz So that it can include match the following and statement based questions like in UPSC examination there should be one statement based question. \
-In statement based question the the statement numbering should start from 1.\
-Make the quiz So that it can include match the following type Question.\
-For example the statement based questions should be of example format.\
-Q. Examine the following statements (UPSC 2002)\
+You are an expert in creating diverse and challenging quiz questions, similar to those found in UPSC examinations. Your task is to generate {number} questions at {difficulty} level. The quiz should include the following types of questions:
 
-Statement 1.None but the rich can afford air travel.\
-Statement 2.Some of those who travel by air become sick.\
-Statement 3.Some of those who become sick require treatment.\
-Statement 4.Which one of the following conclusions can be drawn from the above statements?\
+1. **Multiple Choice Questions (MCQs):** Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced. 
 
-(a) All the rich persons travel by air\
+2. **Statement-Based Questions:** Include at least one question of this type. These should be structured similarly to UPSC questions. For example:
 
-(b) These who travel by air become sick\
+   Q. Examine the following statements (UPSC 2002)
+   
+   Statement 1. None but the rich can afford air travel.
+   Statement 2. Some of those who travel by air become sick.
+   Statement 3. Some of those who become sick require treatment.
+   Statement 4. Which one of the following conclusions can be drawn from the above statements?
+   
+   (a) All the rich persons travel by air
+   (b) Those who travel by air become sick
+   (c) All the rich persons become sick
+   (d) All those who travel by air are rich
 
-(c) All the rich persons become sick\
+   Answer: (d)
 
-(d) All those who travel by air are rich\
+   Ensure that statement-based questions follow a similar structure with clear statements and one correct conclusion.
 
-Answer: (d) \
-This above is example for statement based questions.\
-Make sure the questions are not repeated and answer should be small and follow the below format for creating questions: \n
-    1. first multi choice question.\n
-    Ans: \n\tA. "first choice here."\n\tB. "second choice here."\n\tC. "third choice here."\n\tD. "fourth choice here."\n
-    Correct: "correct answer".\n
-    2. second multi choice question.\n
-    Ans: \n\tA. "first choice here."\n\tB. "second choice here."\n\tC. "third choice here."\n\tD. "fourth choice here."\n
-    Correct: "correct answer".\n
-Using following text to generate muti choice questions based on above instructions:
-"Text" : {text}
+3. **Match the Following Questions:** Include questions where users need to match items from two columns. Ensure the matching pairs are clear and logical.
+
+4. **UPSC-Type Analytical and Interpretive Questions:** Include questions that require analytical thinking and interpretation of data, similar to those found in UPSC exams. These can be based on given data, case studies, or passages, and should test higher-order cognitive skills.
+
+   For example:
+   
+   Q. Consider the following passage:
+   
+   "Economic reforms in the early 1990s led to significant changes in the Indian economy, affecting various sectors differently. While some sectors saw rapid growth, others experienced slower progress."
+   
+   Which of the following statements best reflects the impact of these reforms?
+
+   (a) All sectors experienced uniform growth due to economic reforms.
+   (b) The reforms led to uneven growth across different sectors.
+   (c) Only the industrial sector benefited from the reforms.
+   (d) Economic reforms had no significant impact on the Indian economy.
+
+   Answer: (b)
+
+Make sure that:
+- Questions are original and not repeated.
+- Answers are concise and formatted according to the examples provided below:
+  1. First multiple choice question.
+     Ans:
+     \tA. "First choice here."
+     \tB. "Second choice here."
+     \tC. "Third choice here."
+     \tD. "Fourth choice here."
+     Correct: "Correct answer".
+
+  2. Second multiple choice question.
+     Ans:
+     \tA. "First choice here."
+     \tB. "Second choice here."
+     \tC. "Third choice here."
+     \tD. "Fourth choice here."
+     Correct: "Correct answer".
+
+Use the following text to generate the questions based on the above instructions:
+"Text": {text}
 '''
 
 mcq_prompt = PromptTemplate(
-    input_variables=['number','difficulty','text'],
+    input_variables=['number', 'difficulty', 'text'],
     template=Template
 )
