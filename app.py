@@ -1,15 +1,11 @@
 import streamlit as st
 import time
-from fpdf import FPDF
-import io
-
 # Set the page configuration
-st.set_page_config(page_title="MCQs Creator App", 
+st.set_page_config(page_title="MCQs Creater App", 
                    page_icon="🧐", 
                    layout="centered", 
                    initial_sidebar_state="auto", 
                    )
-
 from src.helper import llm_chain
 from src.data_util import read_input_file
 from src.logger import logging
@@ -22,13 +18,14 @@ with st.sidebar:
     # uploading the input file
     uploaded_file = st.file_uploader("Choose a PDF | Text file", 
                                     accept_multiple_files=False,
-                                    type=['txt', 'pdf'])
+                                    type=['txt','pdf']
+                                    )
     
     # Number of mcq questions user wants
     number = st.number_input("Insert a number", 
-                             min_value=1,
-                             max_value=50,
-                             value=5, placeholder="Type a number...")
+                             min_value= 1,
+                             max_value= 50,
+                            value=5, placeholder="Type a number...")
 
     # Difficulty level slider
     level = st.select_slider('Select difficulty',
@@ -38,52 +35,28 @@ with st.sidebar:
         data = read_input_file(uploaded_file)
         gen_button = st.button("Generate", key="gen_button")
 
-def generate_pdf(response):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size = 12)
-    
-    # Split the response into lines and add to PDF
-    for line in response.split('\n'):
-        pdf.multi_cell(0, 10, line)
-    
-    return pdf
-
 try:
     if gen_button:
         with st.spinner('Generating Multi Choice Questions...'):
             # Generating the response from the model
-            response = llm_chain.run(number=number,
-                                    difficulty=level,
-                                    text=data)
-            logging.info('MCQs are generated')
-        
-        # Generate PDF
-        pdf = generate_pdf(response)
-        
-        # Save PDF to a BytesIO object
-        pdf_bytes = io.BytesIO()
-        pdf.output(pdf_bytes)
-        pdf_bytes.seek(0)
-
-        # Display the generated MCQs
+            response = llm_chain.run(number = number,
+                                    difficulty = level,
+                                    text = data)
+            # print(response)
+        logging.info('MCQ are generated')
+except NameError:
+    pass
+try:
+    if gen_button and response:
+        # write to UI
         message_placeholder = st.empty()
         full_response = ""
-        for chunk in response.replace('\n', '  \n').replace('\t', '----'):
+        for chunk in response.replace('\n','  \n').replace('\t','----'):
             full_response += chunk
             time.sleep(0.005)
             # Add a blinking cursor to simulate typing
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-
-        # Provide a download link for the PDF
-        st.download_button(
-            label="Download MCQs as PDF",
-            data=pdf_bytes,
-            file_name="mcqs.pdf",
-            mime="application/pdf"
-        )
-
-except Exception as e:
-    logging.error(f"Error occurred: {e}")
-    st.error(f"An error occurred: {e}")
+        # st.markdown(response)
+except NameError:
+    pass
