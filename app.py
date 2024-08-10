@@ -9,14 +9,12 @@ st.set_page_config(page_title="MCQs Creater App",
 from src.helper import llm_chain
 from src.data_util import read_input_file
 from src.logger import logging
-st.markdown(
-    """
-    <style>
-    .css-1v0mbdj {display: none;}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 # Set the page title
 st.title(':red[MCQ] :blue[Generator]')
 st.caption('                By :orange[Gemini-Pro] using Langchain 🐦')
