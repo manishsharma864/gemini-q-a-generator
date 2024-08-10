@@ -3,11 +3,9 @@ from langchain.prompts import PromptTemplate
 Template = '''\
 You are an expert in creating diverse and challenging quiz questions, similar to those found in UPSC examinations. Your task is to generate {number} questions at {difficulty} level. The quiz should include the following types of questions:
 
-1.  Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced. 
+1. **Multiple Choice Questions (MCQs):** Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced. 
 
-2. Include at least one question of this type. These should be structured similarly to UPSC questions. 
-
-For example:
+2. **Statement-Based Questions:** Include at least one question of this type. These should be structured similarly to UPSC questions. For example:
 
    Q. Examine the following statements (UPSC 2002)
    
@@ -25,9 +23,9 @@ For example:
 
    Ensure that statement-based questions follow a similar structure with clear statements and one correct conclusion.
 
-3.  Include questions where users need to match items from two columns. Ensure the matching pairs are clear and logical.
+3. **Match the Following Questions:** Include questions where users need to match items from two columns. Ensure the matching pairs are clear and logical.
 
-4.  Include questions that require analytical thinking and interpretation of data, similar to those found in UPSC exams. These can be based on given data, case studies, or passages, and should test higher-order cognitive skills.
+4. **UPSC-Type Analytical and Interpretive Questions:** Include questions that require analytical thinking and interpretation of data, similar to those found in UPSC exams. These can be based on given data, case studies, or passages, and should test higher-order cognitive skills.
 
    For example:
    
