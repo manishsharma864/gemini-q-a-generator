@@ -1,7 +1,7 @@
 from langchain.prompts import PromptTemplate
 
 Template = '''\
-You are an expert in creating diverse types of quiz questions. Your task is to generate {number} questions at {difficulty} level. The quiz should include the following types of questions:
+You are an expert in creating diverse types of quiz questions. Your task is to generate {number} of questions at {difficulty} level. The quiz should include the following types of questions:
 
 1. **Multiple Choice Questions (MCQs):** Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced.
 
