@@ -4,7 +4,7 @@ Template = '''\
 You are an expert in the creation of multiple choice questions  \
 Your job is create a {number} number of multi choice questions in {difficulty} level. \
 Make the quiz to test the cognitive and analytical abilities of a user. \
-Make the quiz So that it can include match the following and statement based questions like in UPSC examination. \
+Make the quiz So that it can include match the following and statement based questions like in UPSC examination there should be one statement based question. \
 For example the statement based questions should be of example format.\
 Q. Examine the following statements (UPSC 2002)\
 
