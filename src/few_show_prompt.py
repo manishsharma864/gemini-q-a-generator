@@ -8,10 +8,10 @@ Make the quiz So that it can include match the following and statement based que
 For example the statement based questions should be of example format.\
 Q. Examine the following statements (UPSC 2002)\
 
-None but the rich can afford air travel.\
-Some of those who travel by air become sick.\
-Some of those who become sick require treatment.\
-Which one of the following conclusions can be drawn from the above statements?\
+1.None but the rich can afford air travel.\
+2.Some of those who travel by air become sick.\
+3.Some of those who become sick require treatment.\
+4.Which one of the following conclusions can be drawn from the above statements?\
 
 (a) All the rich persons travel by air\
 
