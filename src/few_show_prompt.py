@@ -1,8 +1,7 @@
 from langchain.prompts import PromptTemplate
 
 Template = '''\
-You are an expert in creating diverse types of quiz questions. Your task is to generate {number} of questions at {difficulty} level. The quiz should include the following types of questions:
-The questions generated should be exact {number} not less or greater.
+You are an expert in creating diverse types of quiz questions. Your task is to generate exactly {number} questions at {difficulty} level. The quiz should include the following types of questions:
 
 1. **Multiple Choice Questions (MCQs):** Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced.
 
@@ -28,6 +27,7 @@ The questions generated should be exact {number} not less or greater.
 3. **Match the Following Questions:** Include questions where users need to match items from two columns. Ensure the matching pairs are clear and logical.
 
 Make sure that:
+- You generate exactly {number} questions in total.
 - Questions are original and not repeated.
 - Answers are concise and formatted according to the examples provided below:
   1. First multiple choice question.
@@ -49,7 +49,7 @@ Make sure that:
 Use the following text to generate the questions based on the above instructions:
 "Text": {text}
 
-Note: The example questions provided are for format reference only. Your generated questions should be original and not replicate the example format verbatim.
+Note: The example questions provided are for format reference only. Your generated questions should be original and not replicate the example format verbatim. Make sure the total number of questions generated is exactly {number}.
 '''
 
 mcq_prompt = PromptTemplate(
