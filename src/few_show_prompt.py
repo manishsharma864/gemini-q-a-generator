@@ -2,10 +2,11 @@ from langchain.prompts import PromptTemplate
 
 Template = '''\
 You are an expert in creating diverse types of quiz questions. Your task is to generate {number} of questions at {difficulty} level. The quiz should include the following types of questions:
+The questions generated should be exact {number} not less or greater.
 
 1. **Multiple Choice Questions (MCQs):** Each question should have four choices (A, B, C, D). Ensure that the correct answer is clearly marked and the choices are well-balanced.
 
-2. **Statement-Based Questions:** Include at least one question of this type from {number} of questions, similar to UPSC examinations. Follow the structure given in the example below to format these questions, but do not use the example itself:
+2. **Statement-Based Questions:** Include at least one question of this type, similar to UPSC examinations. Follow the structure given in the example below to format these questions, but do not use the example itself:
 
    Example Format:
    Q. Examine the following statements:
