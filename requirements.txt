@@ -6,4 +6,5 @@ python-dotenv
 PyPDF2
 ipykernel
 PdfReader
+fpdf
 -e .
